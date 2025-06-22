@@ -234,15 +234,13 @@ for k = 1:5
             end
 
             %% normalization
-            [~,PStrian] = mapminmax(trainset');
-            PStrian.ymin = -1;
-            PStrian.ymax = 1;
-            [trainset1,PStrian] = mapminmax(trainset,PStrian);
-
-            [~,PStest] = mapminmax(testset');
-            PStest.ymin = -1;
-            PStest.ymax = 1;
-            [testset1,PStest] = mapminmax(testset,PStest);
+            [~,PStrain] = mapminmax(trainset');
+            PStrain.ymin = -1;
+            PStrain.ymax = 1;
+            [trainset1,PStrain] = mapminmax(trainset',PStrain);
+            trainset1 = trainset1';
+            testset1 = mapminmax('apply',testset',PStrain);
+            testset1 = testset1';
 
 
             %%
