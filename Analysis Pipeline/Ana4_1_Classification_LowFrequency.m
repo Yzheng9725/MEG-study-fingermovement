@@ -298,11 +298,11 @@ for k = 1:clfopt.kfold
         DATA2test = test2feature.trial;
 
         for i = 1:numel(DATA2train)
-            trainset(i,:) = reshape(DATA2train{i},1,[]);
+            trainset(i,:) = reshape(DATA2train{i}',1,[]);
         end
 
         for i = 1:numel(DATA2test)
-            testset(i,:) = reshape(DATA2test{i},1,[]);
+            testset(i,:) = reshape(DATA2test{i}',1,[]);
         end
 
         trainlabel = clfopt.Label_all(clfopt.ClassIdx_all ~= k);
